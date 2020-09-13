@@ -6,4 +6,19 @@
 //  Copyright © 2020 Mac. All rights reserved.
 //
 
+
+import ObjectMapper
 import Foundation
+class Object : Mappable{
+    var user : User?
+
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+      
+    }
+    
+    
+}

@@ -7,3 +7,9 @@
 //
 
 import Foundation
+import UIKit
+struct Setting{
+    var image : UIImage
+    var title : String
+    var desc : String
+}

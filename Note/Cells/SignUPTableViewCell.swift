@@ -8,8 +8,9 @@
 
 import UIKit
 
-class SignUPTableViewCell: UITableViewCell {
-
+class SignUPTableViewCell: GeneralTableViewCell {
+     public static let identifier = "identifier"
+    @IBOutlet weak var TFDate: UITextField!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +21,9 @@ class SignUPTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+    override func config() {
+        if let object:String=self.object?.object as? String{
+            self.TFDate.placeholder = object
+        }
+    }
 }

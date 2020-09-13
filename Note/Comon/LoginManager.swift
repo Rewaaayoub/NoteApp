@@ -10,4 +10,12 @@ import UIKit
 
 class LoginManager: NSObject {
 
-}
+        static let sharedInstance = LoginManager()
+           var loggedInUser: User? = nil
+        
+        override init() {
+            super.init()
+        }
+    }
+
+

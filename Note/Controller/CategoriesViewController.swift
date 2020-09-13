@@ -7,24 +7,53 @@
 //
 
 import UIKit
-
+import Alamofire
 class CategoriesViewController: UIViewController {
-
+    @IBOutlet weak var tableView: GeneralTableView!
+    var categories : [Category] = []
+    var user : User?
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        UIViewController.registerNibTable(cell: tableView, identifer: "CategoriesTableViewCell")
+       tableView.parentVC = self
+        getDataCategries()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.hidesBackButton = true;      self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        getDataCategries()
+}
+    @IBAction func setting(_ sender: Any) {
+        let vc = UIStoryboard.mainStoryboard.instantiateViewController(identifier: "SettingViewController") as! SettingViewController
+        vc.user = self.user
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    func getDataCategries(){
+        let request = UserRequest.init(.categorie)
+        self.tableView.allowPullToRefresh(true)
+        self.tableView.baseRequest(request).identifier(identifier:"CategoriesTableViewCell").objectsHandler { (baseResponse) -> [Any] in
+            return  baseResponse?.list2 ??  []
+        }.execute();
+        
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+         }
+        
     }
-    */
 
+
+extension CategoriesViewController {
+//
+//
+//   public func refrech(){
+//        LoginViewController.loginApp(routing: false, email: UserDefaults.standard.email, password: UserDefaults.standard.password) { (status, response) in
+//            if status{
+//                print("sucesss")
+//            }
+//        }
+//    }
+//
+    
 }

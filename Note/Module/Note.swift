@@ -7,3 +7,8 @@
 //
 
 import Foundation
+struct Note {
+    var tilte : String
+    var descripion : String
+    
+}

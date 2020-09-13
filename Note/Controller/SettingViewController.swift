@@ -1,3 +1,4 @@
+
 //
 //  SettingViewController.swift
 //  Note
@@ -9,22 +10,35 @@
 import UIKit
 
 class SettingViewController: UIViewController {
-
+    var setting : [Setting] = []
+    var user : User?
+    @IBOutlet weak var email2: UILabel!
+       @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var tableView: GeneralTableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+         user = LoginManager.sharedInstance.loggedInUser
+        self.email2.text = user?.email ?? ""
+         self.name.text = "\(user?.first_name ?? "") \(user?.last_name ?? "")"
+        UIViewController.registerNibTable(cell: tableView, identifer: "SettingTableViewCell")
+        setting.append(Setting(image: #imageLiteral(resourceName: "language-24px"), title: "Language", desc: "Selected language: EN"))
+        tableView.objects = [GeneralTableViewData(identifier: "SettingTableViewCell", object: setting[0], height: nil)]
+        setting.append(Setting(image: #imageLiteral(resourceName: "perm_identity-24px"), title: "Profile", desc: "Update your data…"))
+        setting.append(Setting(image: #imageLiteral(resourceName: "perm_device_information-24px"), title: "About App", desc: "What is notes app?"))
+        setting.append(Setting(image: #imageLiteral(resourceName: "info-24px"), title: "About course", desc: " Describe the course in brief"))
+        setting.append(Setting(image: #imageLiteral(resourceName: "exit2"), title: "Logout", desc: "Waiting your return…"))
+        tableView.parentVC = self
         // Do any additional setup after loading the view.
+        self.getData(identifers: "SettingTableViewCell", setting: self.setting)
     }
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+}
+extension SettingViewController {
+    public func getData(identifers : String , setting : [Setting]){
+        for i in 1..<setting.count{
+            self.tableView.objects.append(GeneralTableViewData(identifier: identifers, object: setting[i], height: nil))
+        }
     }
-    */
-
 }
