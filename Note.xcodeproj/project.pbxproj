@@ -45,6 +45,8 @@
 		0497DFF724E6787400F65695 /* CategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497DFF524E6787400F65695 /* CategoriesTableViewCell.swift */; };
 		0497DFF824E6787400F65695 /* CategoriesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0497DFF624E6787400F65695 /* CategoriesTableViewCell.xib */; };
 		0497DFFA24E67C2A00F65695 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497DFF924E67C2A00F65695 /* CategoriesViewController.swift */; };
+		0498AB9F2514FD600008FFA2 /* UserRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0498AB9E2514FD600008FFA2 /* UserRealm.swift */; };
+		0498ABA12514FF1A0008FFA2 /* RealmClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0498ABA02514FF1A0008FFA2 /* RealmClass.swift */; };
 		0C8107024DD395077101F34D /* Pods_Note.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC8D1FB39B0E2911D093803 /* Pods_Note.framework */; };
 		4EAE48222507657F00538E92 /* ResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAE481A2507657F00538E92 /* ResponseHandler.swift */; };
 		4EAE48232507657F00538E92 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAE481B2507657F00538E92 /* BaseRequest.swift */; };
@@ -118,6 +120,8 @@
 		0497DFF524E6787400F65695 /* CategoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewCell.swift; sourceTree = "<group>"; };
 		0497DFF624E6787400F65695 /* CategoriesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesTableViewCell.xib; sourceTree = "<group>"; };
 		0497DFF924E67C2A00F65695 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		0498AB9E2514FD600008FFA2 /* UserRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRealm.swift; sourceTree = "<group>"; };
+		0498ABA02514FF1A0008FFA2 /* RealmClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmClass.swift; sourceTree = "<group>"; };
 		4EAE481A2507657F00538E92 /* ResponseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseHandler.swift; sourceTree = "<group>"; };
 		4EAE481B2507657F00538E92 /* BaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
 		4EAE481D2507657F00538E92 /* UserRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 		044F061324E692EE001BF0A5 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				0498AB9D2514FD430008FFA2 /* Realm */,
 				044F061424E69333001BF0A5 /* Categories.swift */,
 				04417B7824EB8BC900AAAEAA /* Note.swift */,
 				0454FA3424EF9F9C0049B9B3 /* Setting.swift */,
@@ -209,6 +214,7 @@
 				047B1F2224F7047F00D31080 /* CreateNoteViewController.swift */,
 				044F981324F89307003F3242 /* ProfileViewController.swift */,
 				043392AD24FCE8A7002F6D37 /* MainNavigationController.swift */,
+				0498ABA02514FF1A0008FFA2 /* RealmClass.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -278,6 +284,14 @@
 				0496CC2B24C1A28700920A4A /* Info.plist */,
 			);
 			path = NoteUITests;
+			sourceTree = "<group>";
+		};
+		0498AB9D2514FD430008FFA2 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				0498AB9E2514FD600008FFA2 /* UserRealm.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		4EAE48192507657F00538E92 /* WebService */ = {
@@ -501,6 +515,7 @@
 				048949AB24EA8ECE007D1191 /* CategoryNameTableViewCell.swift in Sources */,
 				0496CC0C24C1A27C00920A4A /* LoginViewController.swift in Sources */,
 				4EAE48232507657F00538E92 /* BaseRequest.swift in Sources */,
+				0498AB9F2514FD600008FFA2 /* UserRealm.swift in Sources */,
 				047B1F2124F7046500D31080 /* CreateCategoriesViewController.swift in Sources */,
 				4EAE48242507657F00538E92 /* UserRequest.swift in Sources */,
 				0410A1E5250D5BD100CE62BE /* LoginManager.swift in Sources */,
@@ -525,6 +540,7 @@
 				0469688924C2F92800DB926B /* GeneralCollectionView.swift in Sources */,
 				0496CC0A24C1A27C00920A4A /* SceneDelegate.swift in Sources */,
 				043392AE24FCE8A7002F6D37 /* MainNavigationController.swift in Sources */,
+				0498ABA12514FF1A0008FFA2 /* RealmClass.swift in Sources */,
 				044F061524E69333001BF0A5 /* Categories.swift in Sources */,
 				045D97EB24F60D4C0011BC0D /* UserData.swift in Sources */,
 				4EAE48222507657F00538E92 /* ResponseHandler.swift in Sources */,

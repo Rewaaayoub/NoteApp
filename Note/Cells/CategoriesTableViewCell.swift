@@ -57,6 +57,12 @@ class CategoriesTableViewCell: GeneralTableViewCell {
             
         }
     }
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.row == 0{
+            return true
+        }
+         return false
+    }
     @IBAction func remove(_ sender: Any) {
        UIViewController.showMassages(title: "delete", massage: "Are you want to remove note", vc: self.parentVC,{
                       let categries = self.object?.object as! Category

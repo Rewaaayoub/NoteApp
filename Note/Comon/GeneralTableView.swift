@@ -39,6 +39,9 @@ class GeneralTableViewCell: UITableViewCell {
   func editing(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath,forObject object:GeneralTableViewData) {
     
 }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+      return false
+    }
 }
 
 class GeneralTableView: UITableView,UITableViewDelegate,UITableViewDataSource {
@@ -119,21 +122,24 @@ class GeneralTableView: UITableView,UITableViewDelegate,UITableViewDataSource {
         return cell!;
      }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return enableEditing;
+        var cell = tableView.cellForRow(at: indexPath) as? GeneralTableViewCell
+               return cell?.tableView(tableView, canEditRowAt: indexPath) ?? false
+               
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete{
+     
             if let cell:GeneralTableViewCell = tableView.cellForRow(at: indexPath) as? GeneralTableViewCell{
                 cell.editing(tableView ,commit :editingStyle, forRowAt: indexPath,forObject:self.objects[indexPath.row])
-                self.objects.remove(at: indexPath.row)
-                self.reloadData()
-            }
-        }else if(editingStyle == .insert){
-            if let cell:GeneralTableViewCell = tableView.cellForRow(at: indexPath) as? GeneralTableViewCell{
-                          cell.editing(tableView ,commit :editingStyle, forRowAt: indexPath,forObject:self.objects[indexPath.row])
-                          self.reloadData()
-            }
         }
+//                self.objects.remove(at: indexPath.row)
+//                self.reloadData()
+//            }
+//        }else if(editingStyle == .insert){
+//            if let cell:GeneralTableViewCell = tableView.cellForRow(at: indexPath) as? GeneralTableViewCell{
+//                          cell.editing(tableView ,commit :editingStyle, forRowAt: indexPath,forObject:self.objects[indexPath.row])
+//                          self.reloadData()
+//            }
+//        }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell:GeneralTableViewCell = tableView.cellForRow(at: indexPath) as? GeneralTableViewCell{
@@ -176,9 +182,11 @@ class GeneralTableView: UITableView,UITableViewDelegate,UITableViewDataSource {
                     return self.objectConverter?(object) ?? GeneralTableViewData.init(identifier:self.identifier ?? "", object: object, height: nil);
                      
                  }) ?? []
-                 self.objects=objectsArray;
+                self.objects.removeAll()
+                 self.reloadData();
+                self.objects=objectsArray;
                 if self.allowPullToRefresh{
-            self.refreshControl!.endRefreshing()
+                 self.refreshControl!.endRefreshing()
                     }
                                
                  self.reloadData();

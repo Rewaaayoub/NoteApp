@@ -12,4 +12,5 @@ pod 'Alamofire', '~> 4.8'
 pod 'AlamofireObjectMapper', '~> 5.0'
 pod 'SVProgressHUD'
   pod 'MBProgressHUD', '~> 1.2.0'
+  pod 'RealmSwift'
 end

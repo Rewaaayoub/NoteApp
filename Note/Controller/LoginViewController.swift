@@ -60,6 +60,7 @@ extension LoginViewController{
                 UserDefaults.standard.password = password
                   UserDefaults.standard.token = response?.object?.token
                     LoginManager.sharedInstance.loggedInUser = user
+                    
                     if routing ?? true {
                        AppDelegate.delegate.route()
                     }
