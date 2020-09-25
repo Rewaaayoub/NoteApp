@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 class ProfileViewController: UIViewController {
-    var user : User?
+    var user : UserRealm?
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var email2: UILabel!
     @IBOutlet weak var name: UILabel!
@@ -18,7 +18,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var gmail: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        user = LoginManager.sharedInstance.loggedInUser
+        user = UserRealm.currentUser
 
         getData()
         // Do any additional setup after loading the view.
@@ -39,9 +39,12 @@ class ProfileViewController: UIViewController {
            updata.mobile = mobile.text!
         RequestOperationBuilder.init().request(updata).build().executeWithCheckResponse { (response) in
             if response?.status ?? false {
-                UIViewController.showMassages(title: "update", massage: (response?.message ?? ""), vc: self)
-        self.user = response?.object
-                LoginManager.sharedInstance.loggedInUser = self.user
+                UIViewController.showMassages(title: "update", massage: (response?.message ?? ""), vc: self) {
+                    let cv : CategoriesViewController = UIStoryboard.mainStoryboard.instantiateViewController(identifier: "CategoriesViewController") as! CategoriesViewController
+                                self.navigationController?.pushViewController(cv, animated: true)
+                }
+               
+        self.user = UserRealm.currentUser
          self.getData()
      }else{
         UIViewController.showMassages(title: "update", massage: (response?.message ?? ""), vc: self)
@@ -51,3 +54,4 @@ class ProfileViewController: UIViewController {
     
    
 }
+

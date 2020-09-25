@@ -55,12 +55,11 @@ extension LoginViewController{
           //login.parameters
         RequestOperationBuilder.init().request(login).showMessage(true).showLodaer(true).build().executeWithCheckResponse { (response) in
             if response?.status ?? false {
-                  if let user : User = response?.object{
+                  if let user : UserRealm = response?.object{
+                  UserDefaults.standard.id = user.id
                   UserDefaults.standard.email = email
                 UserDefaults.standard.password = password
                   UserDefaults.standard.token = response?.object?.token
-                    LoginManager.sharedInstance.loggedInUser = user
-                    RealmClass.addUser(user: user)
                     if routing ?? true {
                        AppDelegate.delegate.route()
                     }

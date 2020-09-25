@@ -9,7 +9,7 @@
 import UIKit
 
 class SignUPViewController: UIViewController {
-    var user : User?
+    var user : UserRealm?
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var mobile: UITextField!
     @IBOutlet weak var email: UITextField!
@@ -40,7 +40,7 @@ class SignUPViewController: UIViewController {
                   register.password = password.text!
                   RequestOperationBuilder.init().request(register).showMessage(true).build().executeWithCheckResponse { (response) in
                     if response!.status!{
-                        if let user : User = response!.object{
+                        if let user : UserRealm = response!.object{
                         self.user = user
                               LoginViewController.loginApp(routing: true, email: user.email, password: self.password.text!, completionHandler: nil)
                           }

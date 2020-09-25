@@ -11,15 +11,20 @@ import UIKit
 
 class SettingViewController: UIViewController {
     var setting : [Setting] = []
-    var user : User?
+    var user : UserRealm?{
+        didSet{
+            if self.isViewLoaded{
+                self.email2.text = self.user?.email ?? ""
+                 self.name.text = "\(user?.first_name ?? "") \(user?.last_name ?? "")"
+            }
+        }
+    }
     @IBOutlet weak var email2: UILabel!
        @IBOutlet weak var name: UILabel!
     @IBOutlet weak var tableView: GeneralTableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-         user = LoginManager.sharedInstance.loggedInUser
-        self.email2.text = user?.email ?? ""
-         self.name.text = "\(user?.first_name ?? "") \(user?.last_name ?? "")"
+        user = UserRealm.currentUser
         UIViewController.registerNibTable(cell: tableView, identifer: "SettingTableViewCell")
         setting.append(Setting(image: #imageLiteral(resourceName: "language-24px"), title: "Language", desc: "Selected language: EN"))
         tableView.objects = [GeneralTableViewData(identifier: "SettingTableViewCell", object: setting[0], height: nil)]
@@ -31,7 +36,10 @@ class SettingViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.getData(identifers: "SettingTableViewCell", setting: self.setting)
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        user = UserRealm.currentUser
+    }
 
 
 }

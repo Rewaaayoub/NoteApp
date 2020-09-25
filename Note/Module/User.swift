@@ -63,8 +63,5 @@ class User : Mappable{
             notes_count    <- map["notes_count"]
           student    <- map["student"]
     }
-    func realmUser() -> UserRealm{
-        
-    }
-    
+   
 }

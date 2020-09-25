@@ -11,7 +11,7 @@ import Alamofire
 class CategoriesViewController: UIViewController {
     @IBOutlet weak var tableView: GeneralTableView!
     var categories : [Category] = []
-    var user : User?
+    var user : UserRealm?
     override func viewDidLoad() {
         super.viewDidLoad()
         UIViewController.registerNibTable(cell: tableView, identifer: "CategoriesTableViewCell")

@@ -14,7 +14,7 @@ import ObjectMapper_Realm
 class RealmClass: UIViewController {
     
     static func addUser(user : User){
-        let users = UserRealm(user)
+        let users = UserRealm(value: user)
         print(users.categories_count)
         try! AppDelegate.shared.realm?.write {
             AppDelegate.shared.realm?.add(users)

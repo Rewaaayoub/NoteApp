@@ -8,11 +8,35 @@
 
 import Foundation
 import ObjectMapper
+import ObjectMapper_Realm
+import RealmSwift
+import Realm
 
+extension Realm{
+    func customeWrite(handler:@escaping ()->Void){
+        DispatchQueue.main.async {
+               if AppDelegate.shared.realm?.isInWriteTransaction ?? false{
+                handler();
+               }else{
+                try? AppDelegate.shared.realm?.write {
+                       handler();
+               }
+               }
+    }
+}
+}
 class BaseResponse:NSObject,Mappable{
     var status : Bool?
     var message : String?
-    var object : User?
+    var object : UserRealm?{
+        didSet{
+            if let object:UserRealm=object{
+                AppDelegate.shared.realm?.customeWrite(handler: { () -> Void in
+                    AppDelegate.shared.realm?.add(object, update: .all);
+                })
+            }
+        }
+    }
     var process_code : String?
     var list : [CategoryNotes]?
     var list2 : [Category]?

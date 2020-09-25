@@ -1,3 +1,4 @@
+
 //
 //  AppDelegate.swift
 //  Note
@@ -40,6 +41,16 @@ extension UserDefaults{
             AppDelegate.delegate.updateHeaders()
         }
     }
+    var id: Int? {
+        get {
+            return UserDefaults.standard.integer(forKey: "id")
+            
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "id")
+            UserDefaults.standard.synchronize()
+        }
+    }
 }
 import Realm
 import RealmSwift
@@ -66,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func logout(){
 
         UserDefaults.standard.token = nil
-         LoginManager.sharedInstance.loggedInUser = nil
+        UserDefaults.standard.id = nil
         updateHeaders()
         route()
     }
