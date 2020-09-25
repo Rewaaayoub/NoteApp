@@ -41,13 +41,17 @@ extension UserDefaults{
         }
     }
 }
+import Realm
+import RealmSwift
 import Alamofire
 extension UIStoryboard{
   static let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
 }
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-        
+    var realm:Realm?
+
+      static let shared = UIApplication.shared.delegate as! AppDelegate
     func updateHeaders(){
         
         if var token:String = UserDefaults.standard.token {
@@ -87,6 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        // UserDefaults.standard.token = "1020304040404"
         self.updateHeaders();
+        self.realm = try? Realm()
         // Override point for customization after application launch.
         return true
     }

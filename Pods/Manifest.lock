@@ -5,6 +5,9 @@ PODS:
     - ObjectMapper (~> 3.4)
   - MBProgressHUD (1.2.0)
   - ObjectMapper (3.5.3)
+  - "ObjectMapper+Realm (1.0)":
+    - ObjectMapper
+    - RealmSwift
   - Realm (5.4.0):
     - Realm/Headers (= 5.4.0)
   - Realm/Headers (5.4.0)
@@ -41,6 +44,7 @@ DEPENDENCIES:
   - Alamofire (~> 4.8)
   - AlamofireObjectMapper (~> 5.0)
   - MBProgressHUD (~> 1.2.0)
+  - "ObjectMapper+Realm"
   - RealmSwift
   - SVProgressHUD
   - SwifterSwift
@@ -51,6 +55,7 @@ SPEC REPOS:
     - AlamofireObjectMapper
     - MBProgressHUD
     - ObjectMapper
+    - "ObjectMapper+Realm"
     - Realm
     - RealmSwift
     - SVProgressHUD
@@ -61,11 +66,12 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 1989f690e982b71921b9253f53a4f33a9bc00d88
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
+  "ObjectMapper+Realm": bd713d57132bf05880a656695137764692f7d2bb
   Realm: 8949757d76e2451a53d727954c607e49c2542b77
   RealmSwift: 0b7d7121e842724188123c6086831ae6d2952050
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
 
-PODFILE CHECKSUM: ff75c8262a8f4db28b10a7103e169639281a07a2
+PODFILE CHECKSUM: fd5b423d8cefe861e78e761d7423e2c585b75929
 
 COCOAPODS: 1.9.3

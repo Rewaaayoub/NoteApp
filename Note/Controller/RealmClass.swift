@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import RealmSwift
+import Realm
+import ObjectMapper_Realm
 
 class RealmClass: UIViewController {
     
     static func addUser(user : User){
-     let users = UserRealm()
-        users.f
-         try! AppDelegate.shared.realm.write {
-             AppDelegate.shared.realm.add(user)
+        let users = UserRealm(user)
+        print(users.categories_count)
+        try! AppDelegate.shared.realm?.write {
+            AppDelegate.shared.realm?.add(users)
          }
+        
      }
 }

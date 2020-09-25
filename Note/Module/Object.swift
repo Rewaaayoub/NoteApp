@@ -9,7 +9,7 @@
 
 import ObjectMapper
 import Foundation
-class Object : Mappable{
+class Object1 : Mappable{
     var user : User?
 
     required init?(map: Map) {
